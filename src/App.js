@@ -6,9 +6,9 @@ import ConfirmLogin from './components/ConfirmLogin'
 import Home from './components/Home';
 import Register from './components/Register';
 import Reservation from "./components/Reservation";
+import Timer from './components/Timer'
 // import NFCReader from "./components/NFCReader";
 // import TableMaps from './components/TableMaps';
-// import TImer from './components/Timer'
 
 function App() {
   let component;
@@ -35,9 +35,9 @@ function App() {
     case "/reservation":
       component = <Reservation />
       break;
-    // case "/timer":
-    //   component = <TImer />
-    //   break;
+    case "/timer":
+      component = <Timer />
+      break;
   };
   return (
     <div className="App">

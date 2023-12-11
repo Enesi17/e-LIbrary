@@ -3,8 +3,7 @@ import { Alert, Button, Card, CardHeader, Form } from 'react-bootstrap';
 import firebase from "../firebase";
 import { useAuth } from "../context/AuthContext";
 import Login from "./Login";
-import ConfirmLogin from "./ConfirmLogin"
-import NFCReader from "./NFCReader";
+
 
 // import QRCodeGenerator from "./QRCodeGenerator";
 // import TimerComponent from "./Timer"; // Import your Timer component here
@@ -17,11 +16,8 @@ const Reservation = () => {
   const [chair, setChair] = useState('');
   const [availability, setAvailability] = useState(false);
   const [unavailability, setUnavailability] = useState(false);
+  const [reservationDone, setReservationDone] = useState(false);
   const [timerDuration, setTimerDuration] = useState(0);
-  const [confirmReservation, setConfirmReservation] = useState(false);
-  const [emailConfirm, setEmailConfirm] = useState(false);
-  const [nfcConfirm, setNfcConfirm] = useState(false);
-  const [reservationMethod, setReservationMethod] = useState('');
   const [Error, setError] = useState("error");
 
   const handleCheckIfFree = async (e) => {
@@ -54,36 +50,14 @@ const Reservation = () => {
       await chairRef.remove();
       const newChairData = { status: 'reserved', timerDuration: timerDuration };
       await chairRef.set(newChairData);
-      console.log("Reservation Done")
+      setReservationDone(true);
+      console.log("Reservation Done");
     } catch (error) {
+      setReservationDone(false);
       console.error('Error reserving chair:', error.message);
     }
   }
 
-  const handleStartTimer = async () => {
-    try {
-      setConfirmReservation(true);
-      if (reservationMethod === 'email') {
-        console.log('confirm with eamil');
-        setEmailConfirm(true);
-        setNfcConfirm(false);
-      } else if (reservationMethod === 'nfcReader') {
-        console.log('nfcReader');
-        setEmailConfirm(false);
-        setNfcConfirm(true);
-      } else{
-        console.log('method not written');
-        setEmailConfirm(false);
-        setNfcConfirm(false);
-      }
-      console.log('Chair reserved successfully!');
-    } catch (error) {
-      
-    }
-  }
-  const handleReservationMethod = (e) => {
-    setReservationMethod(e.target.value);
-  };
   const handleReset = async () => {
     window.location.reload();
   }
@@ -99,15 +73,11 @@ const Reservation = () => {
     }
   }
 
-  const handleTimerStart = () => {
-    // <TimerComponent />
-    console.log('Timer started!');
-  }
 
   return (
     <div>
       {!currentUser && <Login />}
-      {currentUser && (
+      {currentUser && !reservationDone && (
         <div>
           <h1 style={{ textAlign: 'center', margin: '20px' }}>RESERVATIONS</h1>
           <Card className="login-container">
@@ -177,44 +147,18 @@ const Reservation = () => {
         </div>
       )}
 
-      {currentUser && availability && (
+      {currentUser && !reservationDone && availability && (
         <div style={{ textAlign: 'center' }}>
+          <br />
+          <br />
           <h3>Make Reservation for the selected seat</h3>
           <Button type="submit" onClick={handleReserve}>
             Make Reservation
           </Button>
         </div>
         )}
-
-      {currentUser && availability && (
-        <div style={{ textAlign: 'center' }}>
-          <h3>Start your chair timer</h3>
-          <Button type="submit" onClick={handleStartTimer}>
-              Start Timer
-          </Button>
-        </div>
-      )}
-
-      { currentUser && confirmReservation && (
-        <div>
-          <h4>Do you want to confirm with email or your student card?</h4>
-          <div>
-            <Form>
-            <Form.Group>
-        <Form.Label>Select Reservation Method:</Form.Label>
-        <Form.Control as="select" value={reservationMethod} onChange={handleReservationMethod}>
-          <option value="">Select...</option>
-          <option value="email">Email</option>
-          <option value="nfcReader">NFC Reader</option>
-        </Form.Control>
-      </Form.Group>
-            <Button type="button" onClick={handleStartTimer}>Start Timer</Button>
-            </Form>
-          </div>
-          {emailConfirm && <ConfirmLogin />}
-          {nfcConfirm && <NFCReader />}
-        </div>
-      )}
+      {/* {reservationDone && (window.location.pathname == '/timer')} */}
+      {reservationDone && setTimeout(function () {window.location.pathname = '/timer';}, 100)}
     </div>
   );
 }

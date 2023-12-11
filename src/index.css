@@ -1,0 +1,501 @@
+/* Style for Body */
+/* Set the background image for the entire page */
+
+body {
+  /*background-image: url('Img/HomeImg/Home Background.png');  Replace with the path to your background image */
+  background-size: cover; /* Cover the entire viewport */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keep the background fixed while scrolling */
+  background-position: center;
+}
+
+/* Style other page content as needed */
+.content {
+  text-align: center;
+  padding: 100px 0;
+  color: #000000; /* Text color for content */
+  font-size: 24px;
+}
+
+body, h1, p {
+  margin: 0;
+  padding: 0;
+  font-family: lato;
+  text-align: center;
+}
+
+/* Style other page content as needed */
+.content {
+  padding: 15px;
+  text-align: center;
+  color: #000000; /* Text color for content */
+  font-size: 24px;
+}
+
+/* Style the header */
+header {
+  background-color: #fff;
+  color: #dee3e7;
+  padding: 10px 0;
+  animation: slide-up-header 0.5s ease-in-out forwards; /* Apply the slide-up animation */
+}
+
+/* Keyframes animation for sliding up header */
+@keyframes slide-up-header {
+  to {
+      opacity: 1; /* Show the header */
+      transform: translateY(0); /* Slide up */
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo img {
+  max-height: 40px;
+}
+
+.nav-buttons a {
+  color: #0b5c9e;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+/* Style the introduction section */
+.intro {
+  /* background-image: url('Img/HomeImg/HomeBackgroundCTA.png');  Replace with the path to your background image */
+  background-size: cover; /* Cover the entire section */
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff; /* Text color on top of the background */
+  text-align: center;
+  padding: 100px 0; /* Add padding to center content */
+  transform: translateY(30px); /* Slide down initially */
+  animation: slide-up-intro 0.5s ease-in-out forwards; /* Apply the slide-up animation */
+}
+
+/* Keyframes animation for sliding up introduction */
+@keyframes slide-up-intro {
+  to {
+      opacity: 1; /* Show the introduction section */
+      transform: translateY(0); /* Slide up */
+  }
+}
+
+.intro h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #eaedf0;
+}
+
+.cta-buttons {
+  width: 145px;
+  display: inline-block;
+  margin: 15px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #1932be;
+  text-decoration: none;
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  border: none;
+}
+
+.cta-buttons:hover {
+  width: 145px;
+  display: inline-block;
+  margin: 15px;
+  padding: 10px 20px;
+  background-color: #ffffff6e;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  border: none;
+
+
+}
+
+/* Style the About Us section */
+.about-us {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+  transform: translateY(30px); /* Slide down initially */
+  animation: slide-up-about 0.5s ease-in-out forwards; /* Apply the slide-up animation */
+}
+
+.pikpytja{
+  max-width: 35%;
+}
+
+/* Keyframes animation for sliding up about us */
+@keyframes slide-up-about {
+  to {
+      opacity: 1; /* Show the About Us section */
+      transform: translateY(0); /* Slide up */
+  }
+}
+
+.about-text {
+  display: inline;
+  justify-content: center;
+  font-size: 22px;
+  margin-right: 125px;
+  margin-left: 125px;
+  text-align: center;
+}
+
+.imageabout {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  /* Optionally, you can also set a height and width on the container to control the size of the centered image */
+  height: 100vh; /* 100% of the viewport height */
+  /* width: 100%; */ /* Optionally set a width */
+}
+
+.about-image img {
+  max-width: 320px; /* Optionally set a maximum width for the image */
+  max-height: 320px; /* Optionally set a maximum height for the image */
+}
+
+/* Style the Contact Us section */
+.contact-us {
+  text-align: center;
+  background-color: #fff;
+  padding: 60px 0;
+  opacity: 0; /* Hide the Contact Us section initially */
+  transform: translateY(30px); /* Slide down initially */
+  animation: slide-up-contact 0.5s ease-in-out forwards; /* Apply the slide-up animation */
+}
+
+/* Keyframes animation for sliding up contact us */
+@keyframes slide-up-contact {
+  to {
+      opacity: 1; /* Show the Contact Us section */
+      transform: translateY(0); /* Slide up */
+  }
+}
+
+/* Style the login section */
+.login {
+ /* background-image: url('Img/HomeImg/HomeBackgroundCTA.png');*/
+  background-size:cover;
+  text-align: center;
+  margin: 30px;
+  border-radius: 35px;
+  background-color: #fff;
+  padding: 60px 0;
+  opacity: 0; /* Hide the login section initially */
+  transform: translateY(30px); /* Slide down initially */
+  animation: slide-up-login 0.5s ease-in-out forwards; /* Apply the slide-up animation */
+}
+
+
+/* Keyframes animation for sliding up login */
+@keyframes slide-up-login {
+  to {
+      opacity: 1; /* Show the login section */
+      transform: translateY(0); /* Slide up */
+  }
+}
+
+.login h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #0b5c9e;
+}
+
+.login-container {
+  border-radius: 50%;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #0b5c9e;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+/* Add padding to the blue container */
+/* .login-container {
+  padding: 20px;
+} */
+
+/* Style the form elements */
+.input-container {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.input-container input {
+  width: 93%;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+}
+
+.remember-me {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.remember-me label {
+  color: #fff;
+}
+
+.continue-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.continue-button:hover {
+  background-color: #005e99;
+}
+
+/* Style the forgot password and create account links */
+.forgot-password, .create-account {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgot-password a, .create-account a {
+  color: #89d4ff;
+  text-decoration: none;
+}
+
+/* Style the footer */
+footer {
+  text-align: center;
+  background-color: #0b5c9e;
+  color: #fff;
+  padding: 20px 0;
+  opacity: 0; /* Hide the footer initially */
+  transform: translateY(30px); /* Slide down initially */
+  animation: slide-up-footer 0.5s ease-in-out forwards; /* Apply the slide-up animation */
+}
+
+/* Keyframes animation for sliding up footer */
+@keyframes slide-up-footer {
+  to {
+      opacity: 1; /* Show the footer */
+      transform: translateY(0); /* Slide up */
+  }
+}
+
+/* Style the contact information container */
+.contact-info-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Style the blue box for contact information */
+.blue-box {
+  background-color: #0b5c9e; /* Blue background color */
+  padding: 20px;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Optional box shadow */
+  color: #fff; /* Text color for content inside the blue box */
+  opacity: 0; /* Hide the blue container initially */
+  transform: translateY(20px); /* Slide down initially */
+  animation: slide-up-contact 0.5s ease-in-out forwards; /* Apply the slide-up animation */
+}
+
+/* Style the contact information text */
+.contact-info p {
+  margin: 10px 0;
+}
+
+/* Keyframes animation for sliding up contact us */
+@keyframes slide-up-contact {
+  to {
+      opacity: 1; /* Show the Contact Us section */
+      transform: translateY(0); /* Slide up */
+  }
+}
+
+/*Option page css*/
+
+
+/* Style the logo */
+.logo img {
+  max-width: 150px; /* Adjust the size of the logo */
+  max-height: 150px;
+
+}
+
+.logo-options {
+  margin: 50px;
+  max-width: 90%;
+  transition: transform 0.2s, background-color 0.2s; /* Smooth hover effect */
+}
+
+
+.logo-options:hover {
+  
+  transform: translateY(-5px);
+}
+
+/* Style the options section */
+.options {
+  max-width: 500px;
+  margin: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Style each option box */
+.option {
+  text-align: center;
+  margin: 10px;
+  flex: 0 0 calc(33.333% - 20px); /* Adjust the width for responsive layout */
+}
+
+.box {
+  margin: 35px;
+  width: 100%;
+  padding: 20px;
+  background-color: #0b5c9e; /* Blue background color */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff; /* Text color for options */
+  font-size: 18px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Optional box shadow */
+  text-decoration: none; /* Remove underlines from links */
+  transition: transform 0.2s, background-color 0.2s; /* Smooth hover effect */
+}
+
+.box img {
+  max-width: 50px; /* Adjust the size of the icon */
+  max-height: 50px;
+  margin-bottom: 10px;
+}
+
+/* Add hover effect */
+.box:hover {
+  background-color: #005e99; /* Darker blue on hover */
+  transform: translateY(-5px); /* Lift the box slightly on hover */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .option {
+      flex: 0 0 calc(50% - 20px); /* Two columns on smaller screens */
+  }
+}
+
+
+
+/*footer section*/
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*App style*/
+
+.ttl {
+ background-color: #005e9e;
+ color: #fff;
+}
+
+
+.app-container{
+  margin: 120px;
+}
+
+.title {
+  margin: 45px;
+}
+
+.bttns{
+  margin-top: 25px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnAPP {
+  width: 235px;
+  padding: 15px;
+  border:none;
+  border-radius: 10px;
+  background-color: #005e9e;
+  color: #ffffff;
+  margin: 12px;
+}
+
+.btnAPPedit {
+  padding: 10px;
+  border:none;
+  border-radius: 10px;
+  background-color: #0f63e9fc;
+  color: #ffffff;
+}
+
+.btnAPPdelete {
+  padding: 10px;
+  border:none;
+  border-radius: 10px;
+  background-color: #f61010fe;
+  color: #ffffff;
+  margin: 15px;
+}
+
+.btnAPPlogout {
+  display: flex;
+  width: 235px;
+  padding: 15px;
+  border:none;
+  border-radius: 10px;
+  background-color: #472b51a2;
+  color: #ffffff;
+  justify-content: center;
+  margin: auto;
+}
+
+.chair {
+  width: 30px;
+  height: 30px;
+  background-color: green; /* Default color for chairs */
+  cursor: pointer;
+}
+
+.home{
+  text-align: center;
+}

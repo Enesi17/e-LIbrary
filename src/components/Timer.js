@@ -32,7 +32,7 @@ const Timer = () => {
           }
           console.log('Chair reserved successfully!');
         } catch (error) {
-          
+          console.error('Error starting timer:', error.message);
         }
       }
     

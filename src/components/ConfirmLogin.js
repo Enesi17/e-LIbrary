@@ -42,7 +42,7 @@ const Login = () => {
     <div className="login" >
        <Card className="login-container">
             <Card.Header>
-                <h2>Login for Confirmation</h2>
+                <h2>Confirmation To Start Timer</h2>
             </Card.Header>
             <Card.Body>
                 {loginFail && <Alert className="info" variant="danger">Confirm failed</Alert>}

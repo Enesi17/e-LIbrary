@@ -3,7 +3,6 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
-    const { currentUser } = useAuth(false);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -16,7 +15,7 @@ const Home = () => {
     };
   return (
       <Container className="home">
-        {currentUser && <Row>
+         <Row>
             <Col md={{ span: 6, offset: 3 }}>
               <h2>Welcome to Our Library Management System</h2>
               <br />
@@ -31,7 +30,7 @@ const Home = () => {
                 Login
               </Button>
             </Col>
-          </Row>}
+          </Row>
     </Container>
   );
 };

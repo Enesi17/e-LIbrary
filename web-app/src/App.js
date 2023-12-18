@@ -1,16 +1,15 @@
 import React from "react";
 import './index.css';
-import { AuthProvider } from "./context/AuthContext";
-import Login from './components/Login';
-import ConfirmLogin from './components/ConfirmLogin'
+import { AuthProvider} from "./context/AuthContext";
 import Home from './components/Home';
-import Register from './components/Register';
+import Login from './components/Login';
+import Register from "./components/Register";
 import Reservation from "./components/Reservation";
-import Timer from './components/Timer'
-// import NFCReader from "./components/NFCReader";
-// import TableMaps from './components/TableMaps';
+import ManageReservation from "./components/ManageReservation";
+import Timer from "./components/Timer";
 
 function App() {
+
   let component;
   switch(window.location.pathname)
   {
@@ -20,25 +19,20 @@ function App() {
     case "/login":
       component = <Login />
       break;
-    case "/confirmlogin":
-      component = <ConfirmLogin />
-      break;
     case "/register":
       component = <Register />
       break;
-    // case "/NFCReader":
-    //   component = <NFCReader />
-    //   break;
-    // case "/maps":
-    //   component = <TableMaps />
-    //   break; 
     case "/reservation":
       component = <Reservation />
+      break;
+    case "/manageReservation":
+      component = <ManageReservation />
       break;
     case "/timer":
       component = <Timer />
       break;
-  };
+  }
+  
   return (
     <div className="App">
       <AuthProvider>

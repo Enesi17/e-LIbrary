@@ -14,17 +14,22 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
             e.preventDefault();
-
-            try {
-                setError("");
-                await login(emailRef.current.value, passwordRef.current.value);
-                setLoginSuccess(true);
-                setLoginFail(false);
-            } catch (error) {
-                setError("Login Failed");
-                setLoginFail(true);
-                console.log(Error);
+            const email = currentUser.email;
+            if(email === emailRef.current.value){
+                try {
+                    setError("");
+                    await login(emailRef.current.value, passwordRef.current.value);
+                    setLoginSuccess(true);
+                    setLoginFail(false);
+                } catch (error) {
+                    setError("Login Failed");
+                    setLoginFail(true);
+                    console.log(Error);
+                }
+            }else{
+                console.log("wrong email")
             }
+           
     }
 
     const handleLogout = async (e) => {
@@ -42,7 +47,7 @@ const Login = () => {
     <div className="login" >
        <Card className="login-container">
             <Card.Header>
-                <h2>Confirmation To Start Timer</h2>
+                <h5>Confirmation To Start Timer</h5>
             </Card.Header>
             <Card.Body>
                 {loginFail && <Alert className="info" variant="danger">Confirm failed</Alert>}
@@ -65,7 +70,7 @@ const Login = () => {
             </Card.Footer>
         </Card>
         {loginSuccess && <Alert className="info" variant="success">Login succsessfully</Alert>}
-        {loginSuccess && setTimeout(function () {window.location.pathname = '/reservation';}, 100)}
+        {loginSuccess && setTimeout(function () {window.location.pathname = '/timer';}, 100)}
         {/* {currentUser && <Button type="button" onClick={handleLogout}>Logout</Button>} */}
     </div>
     );

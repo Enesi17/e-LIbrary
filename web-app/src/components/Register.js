@@ -10,7 +10,8 @@ const Register = () => {
     let confirmPasswordRef = useRef();
     let studentIDRef = useRef();
 
-    const { currentUser, logout } = useAuth();
+    const { currentUser } = useAuth(false);
+    const { logout } = useAuth();
     const [confirmError, setConfirmError] = useState(false);
     const [signupSuccess, setSignupSuccess] = useState(null);
     const [signupFail, setSignupFail] = useState(false);
@@ -60,7 +61,6 @@ const Register = () => {
             </Card.Header>
             <Card.Body>
                 {signupSuccess && <Alert className="info" variant="success">Signed up successfully</Alert>}
-                {signupSuccess && setTimeout(function () {window.location.pathname = '/reservation';}, 100)}
                 {signupFail && <Alert className="info" variant="danger">Couldn't register, Check mail</Alert>}
                 {confirmError && <Alert className="info" variant="danger">Passwords do not match</Alert>}
                 <Form onSubmit={handleSubmit}> 
@@ -91,6 +91,7 @@ const Register = () => {
                 </p>
             </Card.Footer>
         </Card>}
+        {signupSuccess && setTimeout(function () {window.location.pathname = '/reservation';}, 100)}
         { currentUser && <Button type="button" onClick={handleLogout}>Log out</Button>}
         </div>
     );

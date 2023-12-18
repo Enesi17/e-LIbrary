@@ -4,13 +4,15 @@ import { Form, Card, Button, Alert } from 'react-bootstrap'
 
 const Login = () => {
 
+    const { currentUser } = useAuth(false);
+    const { login, logout } = useAuth();
+    
     const [loginSuccess, setLoginSuccess] = useState(false);
     const [loginFail, setLoginFail] = useState(false);
-    const { currentUser} = useAuth(false);
-    const { login, logout } = useAuth();
+    const [Error, setError] = useState("error");
+    
     const emailRef = useRef();
     const passwordRef = useRef();
-    const [Error, setError] = useState("error");
 
     const handleSubmit = async (e) => {
             e.preventDefault();
@@ -64,9 +66,9 @@ const Login = () => {
                 <p>If there is any problems while trying to login contact <a href="">tech support</a></p>
             </Card.Footer>
         </Card>}
-        {loginSuccess && <Alert className="info" variant="success">Login succsessfully</Alert>}
-        {loginSuccess && setTimeout(function () {window.location.pathname = '/reservation';}, 100)}
-        { currentUser && <Button type="button" onClick={handleLogout}>Logout</Button>}
+        { loginSuccess && <Alert className="info" variant="success">Login succsessfully</Alert> }
+        { loginSuccess && setTimeout(function () {window.location.pathname = '/reservation';}, 100) }
+        { currentUser && <Button type="submit" onClick={handleLogout}>Logout</Button>}
     </div>
     );
 }

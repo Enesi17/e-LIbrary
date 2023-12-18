@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { Alert, Button, Card, CardHeader, Form } from 'react-bootstrap';
 import firebase from "../firebase";
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 import { useAuth } from "../context/AuthContext";
 import Login from "./Login";
-
-
-// import QRCodeGenerator from "./QRCodeGenerator";
-// import TimerComponent from "./Timer"; // Import your Timer component here
-// import NFCReader from "./NFCReader";
 
 const Reservation = () => {
   const { currentUser, logout } = useAuth();
@@ -19,6 +16,8 @@ const Reservation = () => {
   const [reservationDone, setReservationDone] = useState(false);
   const [timerDuration, setTimerDuration] = useState(0);
   const [Error, setError] = useState("error");
+  const currentDate = new Date();
+  const timestamp = currentDate.getTime();
 
   const handleCheckIfFree = async (e) => {
     e.preventDefault();
@@ -45,11 +44,23 @@ const Reservation = () => {
 
   const handleReserve = async () => {
     try {
-      const chairRef = firebase.database().ref(`floors/floor${floor}/tables/table${table}/chairs/chair${chair}/status`);
+      const chairRef = firebase.database().ref(`floors/floor${floor}/tables/table${table}/chairs/chair${chair}`);
       const snapshot = await chairRef.once('value');
       await chairRef.remove();
       const newChairData = { status: 'reserved', timerDuration: timerDuration };
       await chairRef.set(newChairData);
+
+      const reservationsRef = firebase.firestore().collection('reservations');
+      const reservationData = {
+        userId: currentUser.email,
+        floor: floor,
+        table: table,
+        chair: chair,
+        timerDuration: timerDuration,
+        timestamp: timestamp,
+      };
+      await reservationsRef.add(reservationData);
+
       setReservationDone(true);
       console.log("Reservation Done");
     } catch (error) {
@@ -141,6 +152,7 @@ const Reservation = () => {
                 </Form.Group>
               </Form>
               {unavailability && <Alert className="info" variant="danger">This chair is not available. Try another chair</Alert>}
+              {availability && <Alert className="info" variant="success">Selected chair is free.</Alert>}
             </Card.Body>
             <Card.Footer></Card.Footer>
           </Card>
@@ -158,7 +170,7 @@ const Reservation = () => {
         </div>
         )}
       {/* {reservationDone && (window.location.pathname == '/timer')} */}
-      {reservationDone && setTimeout(function () {window.location.pathname = '/timer';}, 100)}
+      {reservationDone && setTimeout(function () {window.location.pathname = '/manageReservation';}, 100)}
     </div>
   );
 }

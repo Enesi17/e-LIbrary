@@ -1,5 +1,5 @@
 import React from "react";
-import NFCLogo from "./nfcLogo.png"
+import NFCLogo from "../img/nfcLogo.png"
 
 const NFCReader = () => {
     return ( 

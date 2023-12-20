@@ -1,11 +1,10 @@
-// Timer.js
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import firebase from '../firebase'; // Import firebase
 import { useAuth } from '../context/AuthContext'; // Import useAuth
 
-const Timer = ({ duration }) => {
-  const [seconds, setSeconds] = useState(duration * 60);
+const Timer = () => {
+  const [seconds, setSeconds] = useState();
   const [isPaused, setIsPaused] = useState(false);
   const [startTimer, setStartTimer] = useState(false);
   const { currentUser } = useAuth();
@@ -15,6 +14,7 @@ const Timer = ({ duration }) => {
   const [chair, setChair] = useState('');
   const [error, setError] = useState(null);
   const [reservationData, setReservationData] = useState(null);
+  const [timerDuration, setTimerDuration] = useState(0);
 
   useEffect(() => {
     let timerId;
@@ -30,65 +30,39 @@ const Timer = ({ duration }) => {
     }
 
     return () => clearInterval(timerId);
-  }, [isPaused, seconds, duration, currentUser]);
+  }, [isPaused, seconds, currentUser]);
 
-  useEffect(() => {
-    // Fetch reservation data when the component mounts
-    const fetchReservationData = async () => {
-      try {
-        const reservationsRef = firebase.firestore().collection('reservations');
-        const querySnapshot = await reservationsRef
-          .where('userId', '==', currentUser.email)
-          .get();
-
-        if (!querySnapshot.empty) {
-          const reservationDoc = querySnapshot.docs[0].data();
-          setReservationData(reservationDoc);
-          setFloor(reservationDoc.floor);
-          setTable(reservationDoc.table);
-          setChair(reservationDoc.chair);
-        } else {
-          setError('No reservation found.');
-        }
-      } catch (error) {
-        setError('Error fetching reservation data: ' + error.message);
-        console.error('Error fetching reservation data:', error.message);
-      }
-    };
-
-    fetchReservationData();
-  }, [currentUser.email]);
-
-
-  const handleStartTimer = async () => {
+  const fetchReservationData = async () => {
     try {
       const reservationsRef = firebase.firestore().collection('reservations');
       const querySnapshot = await reservationsRef
         .where('userId', '==', currentUser.email)
-        .limit(1)
         .get();
 
       if (!querySnapshot.empty) {
-        const reservationData = querySnapshot.docs[0].data();
-        const reservationFloor = reservationData.floor;
-        const reservationTable = reservationData.table;
-        const reservationChair = reservationData.chair;
-
-        setFloor(reservationFloor);
-        setTable(reservationTable);
-        setChair(reservationChair);
-
-        const reservationDuration = reservationData.timerDuration || 0;
-        setSeconds(reservationDuration);
-        setStartTimer(true);
+        const reservationDoc = querySnapshot.docs[0].data();
+        setReservationData(reservationDoc);
+        setFloor(reservationDoc.floor);
+        setTable(reservationDoc.table);
+        setChair(reservationDoc.chair);
+        setTimerDuration(reservationDoc.timerDuration);
+        setSeconds(reservationDoc.timerDuration * 60);
       } else {
-        console.log('No reservation found for the current user.');
+        setError('No reservation found.');
       }
     } catch (error) {
-      console.error('Error starting timer:', error.message);
-      setStartTimer(false);
+      setError('Error fetching reservation data: ' + error.message);
+      console.error('Error fetching reservation data:', error.message);
     }
   };
+
+  useEffect(() => {
+    // Fetch reservation data when the component mounts
+    console.log(seconds);
+    fetchReservationData();
+  }, [currentUser.email]);
+
+  
 
   const handleCancelReservation = async () => {
     try {
@@ -107,20 +81,11 @@ const Timer = ({ duration }) => {
       });
 
       setReservationData(null);
-      console.log("Reservation Canceled");
+      console.log('Reservation Canceled');
     } catch (error) {
       setError('Error canceling reservation: ' + error.message);
       console.error('Error canceling reservation:', error.message);
     }
-  };
-
-  const handlePause = () => {
-    setIsPaused(!isPaused);
-  };
-
-  const handleReset = () => {
-    setIsPaused(true);
-    setSeconds(duration * 60); // Reset to the original duration in seconds
   };
 
   const formatTime = (time) => {
@@ -131,12 +96,10 @@ const Timer = ({ duration }) => {
 
   return (
     <div>
-      
-        {!startTimer && <Button onClick={handleStartTimer}>Start</Button>}
-          {startTimer && <h2>Time Remaining: {formatTime(seconds)}</h2>}
-        <Button onClick={handlePause}>{isPaused ? 'Resume' : 'Pause'}</Button>
-        <Button onClick={handleReset}>Reset</Button>
-      {timerEnd && handleCancelReservation() && setTimeout(function () {window.location.pathname = '/reservation';}, 1000)}
+      <Card className='login'>
+        <h2>Time Remaining: {formatTime(seconds)}</h2>
+        {timerEnd && handleCancelReservation() && setTimeout(function () {window.location.pathname = '/reservation';}, 1000)}
+      </Card>
     </div>
   );
 };

@@ -11,6 +11,7 @@ const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const [Error, setError] = useState("error");
+    const [confirmFail, setConfirmFail] = useState(false);
 
     const handleSubmit = async (e) => {
             e.preventDefault();
@@ -28,6 +29,7 @@ const Login = () => {
                 }
             }else{
                 console.log("wrong email")
+                setConfirmFail(true);
             }
            
     }
@@ -64,6 +66,8 @@ const Login = () => {
                         <Button type="submit" className="button">Confirm</Button>
                     </Form.Group>
                 </Form>
+                <br />
+                {confirmFail && <Alert variant="danger">Wrong Email</Alert>}
             </Card.Body>
             <Card.Footer>
                 <p>If there is any problems while trying to login contact <a href="">tech support</a></p>

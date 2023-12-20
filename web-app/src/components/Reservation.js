@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { Alert, Button, Card, CardHeader, Form } from 'react-bootstrap';
+import { Alert, Button, Card, CardHeader, Form, Row, Col } from 'react-bootstrap';
 import firebase from "../firebase";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { useAuth } from "../context/AuthContext";
 import Login from "./Login";
+import TableMapView from "./TableMapView";
+
+// import QRCodeGenerator from "./QRCodeGenerator";
+// import TimerComponent from "./Timer"; // Import your Timer component here
+// import NFCReader from "./NFCReader";
 
 const Reservation = () => {
   const { currentUser, logout } = useAuth();
@@ -84,13 +89,21 @@ const Reservation = () => {
     }
   }
 
+  const handleSelectChair = ({ floor, table, chair }) => {
+    setFloor(floor);
+    setTable(table);
+    setChair(chair);
+    // Add other logic to update the form as needed
+  };
 
   return (
     <div>
       {!currentUser && <Login />}
       {currentUser && !reservationDone && (
         <div>
-          <h1 style={{ textAlign: 'center', margin: '20px' }}>RESERVATIONS</h1>
+        <h1 style={{ textAlign: 'center', margin: '20px' }}>RESERVATIONS</h1>
+        <Row>
+          <Col md={6}>
           <Card className="login-container">
             <CardHeader>
               <h4 style={{ textAlign: 'center', margin: '10px' }}>Reserve a chair for yourself</h4>
@@ -154,21 +167,33 @@ const Reservation = () => {
               {unavailability && <Alert className="info" variant="danger">This chair is not available. Try another chair</Alert>}
               {availability && <Alert className="info" variant="success">Selected chair is free.</Alert>}
             </Card.Body>
-            <Card.Footer></Card.Footer>
           </Card>
+          {currentUser && !reservationDone && availability && (
+              <div style={{ textAlign: 'center', margin: '10px', padding: '15px' }}>
+                <br />
+                <br />
+                 <h3>Make Reservation for the selected seat</h3>
+                 <br />
+                  <Button type="submit" onClick={handleReserve}>Make Reservation</Button>
+              </div>
+        )}
+            </Col>
+
+            <Col md={6}>
+              <Card className="login-container">
+                <Card.Header>
+                  <h4 style={{ textAlign: 'center', margin: '10px' }}>Table Map View</h4>
+                </Card.Header>
+                <Card.Body>
+                  <TableMapView onSelectChair={handleSelectChair} />
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         </div>
       )}
 
-      {currentUser && !reservationDone && availability && (
-        <div style={{ textAlign: 'center' }}>
-          <br />
-          <br />
-          <h3>Make Reservation for the selected seat</h3>
-          <Button type="submit" onClick={handleReserve}>
-            Make Reservation
-          </Button>
-        </div>
-        )}
+      
       {/* {reservationDone && (window.location.pathname == '/timer')} */}
       {reservationDone && setTimeout(function () {window.location.pathname = '/manageReservation';}, 100)}
     </div>

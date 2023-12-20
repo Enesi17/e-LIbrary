@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import firebase from "../firebase";
 import { useAuth } from "../context/AuthContext";
 import ConfirmLogin from "./ConfirmLogin";
-import NFCReader from "./NFCReader";
+import ConfirmSID from "./ConfirmSID";
 import Timer from "./Timer"
 
 const StartTimer = () => {
@@ -72,16 +72,18 @@ const StartTimer = () => {
                 <Form.Control as="select" value={reservationMethod} onChange={handleReservationMethod}>
                   <option value="">Select...</option>
                   <option value="email">Email</option>
-                  <option value="nfcReader">NFC Reader</option>
+                  <option value="nfcReader">Student ID</option>
                 </Form.Control>
               </Form.Group>
+              <br />
               <Button type="button" onClick={handleSelectMethod}>
                 Select
               </Button>
             </Form>
+            <br />
           </div>
           {emailConfirm && <ConfirmLogin />}
-          {nfcConfirm && <NFCReader />}
+          {nfcConfirm && <ConfirmSID />}
         </div>
       )}
       {startTimer && <Timer duration={timerDuration} onTimerEnd={handleTimerEnd} />}

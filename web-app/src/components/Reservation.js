@@ -151,6 +151,7 @@ const Reservation = () => {
                         <Form.Control
                             type="number"
                             placeholder="Set Timer (min)"
+                            defaultValue={"1"}
                             min="1"
                             max="4"
                             value={timerDuration}

@@ -5,7 +5,7 @@ import { getAuth } from 'firebase/auth';
 import firebaseApp from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 
-const ReservationScreen = ({ navigation }) => {
+const ReservationScreen = () => {
 //   const { currentUser, logout } = useAuth();
     const navigation = useNavigation();
   const [floor, setFloor] = useState('');

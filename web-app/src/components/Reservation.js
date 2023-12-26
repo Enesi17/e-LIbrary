@@ -7,10 +7,6 @@ import { useAuth } from "../context/AuthContext";
 import Login from "./Login";
 import TableMapView from "./TableMapView";
 
-// import QRCodeGenerator from "./QRCodeGenerator";
-// import TimerComponent from "./Timer"; // Import your Timer component here
-// import NFCReader from "./NFCReader";
-
 const Reservation = () => {
   const { currentUser, logout } = useAuth();
   const [floor, setFloor] = useState('');
@@ -21,38 +17,74 @@ const Reservation = () => {
   const [reservationDone, setReservationDone] = useState(false);
   const [timerDuration, setTimerDuration] = useState(0);
   const [Error, setError] = useState("error");
+  const [showAlert, setShowAlert] = useState(false);
   const currentDate = new Date();
   const timestamp = currentDate.getTime();
+  const maxDate = new Date();
+  maxDate.setDate(currentDate.getDate() + 5);
+  const maxTime = new Date(currentDate.getTime() + 5 * 60 * 60 * 1000);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+
+  const calculateTimerDuration = () => {
+    const start = new Date(`1970-01-01T${startTime}`);
+    const end = new Date(`1970-01-01T${endTime}`);
+    const periodInMinutes = (end - start) / (60 * 1000);
+    setTimerDuration(periodInMinutes);
+    return periodInMinutes;
+  };
+
+  const validateFormInputs = () => {
+    // Add validation logic for each form input
+    if (!floor || !table || !chair || !selectedDate || !startTime || !endTime) {
+      return false;
+    }
+    return true;
+  };
 
   const handleCheckIfFree = async (e) => {
     e.preventDefault();
-
+    if(timerDuration <= 0){
+      setShowAlert(true);
+    }else{
+      setShowAlert(false);
+    }
     try {
+      // Reset the state before checking chair availability
+      setAvailability(false);
+      setUnavailability(false);
+  
       console.log('Checking if chair: ', chair, " in table: ", table, " of floor: ", floor, " is free...");
       const chairRef = firebase.database().ref(`floors/floor${floor}/tables/table${table}/chairs/chair${chair}/status`);
-      const snapshot = await chairRef.once('value');
-      const status = snapshot.val();
-
+      const cardRef = firebase.database().ref(`floors/floor${floor}/tables/table${table}/chairs/chair${chair}/cardID`);
+      const snapshot1 = await chairRef.once('value');
+      const snapshot2 = await cardRef.once('value');
+      const status = snapshot1.val();
+      const cardID = snapshot2.val();
+  
       if (status === 'available') {
         console.log('Chair is available!');
         setAvailability(true);
-        setUnavailability(false);
       } else {
         console.log('Chair unavailable :( ');
-        setAvailability(false);
         setUnavailability(true);
       }
     } catch (error) {
       console.error('Error checking chair availability: ', error.message);
     }
-  }
+  
+    calculateTimerDuration();
+    console.log(timerDuration);
+  };
 
   const handleReserve = async () => {
+    
     try {
       const chairRef = firebase.database().ref(`floors/floor${floor}/tables/table${table}/chairs/chair${chair}`);
       const snapshot = await chairRef.once('value');
       await chairRef.remove();
-      const newChairData = { status: 'reserved', timerDuration: timerDuration };
+      const newChairData = { cardID:'0', status: 'reserved', timerDuration: timerDuration };
       await chairRef.set(newChairData);
 
       const reservationsRef = firebase.firestore().collection('reservations');
@@ -61,8 +93,8 @@ const Reservation = () => {
         floor: floor,
         table: table,
         chair: chair,
-        timerDuration: timerDuration,
-        timestamp: timestamp,
+        timerDuration: calculateTimerDuration(),
+        reservationDate: selectedDate,
       };
       await reservationsRef.add(reservationData);
 
@@ -72,6 +104,7 @@ const Reservation = () => {
       setReservationDone(false);
       console.error('Error reserving chair:', error.message);
     }
+    setShowAlert(false);
   }
 
   const handleReset = async () => {
@@ -146,19 +179,49 @@ const Reservation = () => {
                             required
                         />
                     </Form.Group>
-                    <Form.Group className='input-container'>
-                        <Form.Label>Set Timer</Form.Label>
+                    <Form.Group className="input-container">
+                        <Form.Label>Select Date</Form.Label>
                         <Form.Control
-                            type="number"
-                            placeholder="Set Timer (min)"
-                            defaultValue={"1"}
-                            min="1"
-                            max="4"
-                            value={timerDuration}
-                            onChange={(e) => setTimerDuration(e.target.value)}
+                            type="date"
+                            value={selectedDate}
+                            min={currentDate.toISOString().split('T')[0]} // Set minimum date to today
+                            max={maxDate.toISOString().split('T')[0]} // Set maximum date to 5 days from today
+                            onChange={(e) => setSelectedDate(e.target.value)}
                             required
                         />
                     </Form.Group>
+                    <Form.Group className="input-container">
+                        <Form.Label>Start Time</Form.Label>
+                        <Form.Control
+                            type="time"
+                            value={startTime}
+                            min={(currentDate.getHours() + 2).toString().padStart(2, '0') + ':' + currentDate.getMinutes().toString().padStart(2, '0')}
+                            max={maxTime.getHours().toString().padStart(2, '0') + ':' + maxTime.getMinutes().toString().padStart(2, '0')}
+                            onChange={(e) => setStartTime(e.target.value)}
+                            required
+                        />
+                        <Form.Label>End Time</Form.Label>
+                        <Form.Control
+                            type="time"
+                            value={endTime}
+                            min={(currentDate.getHours() + 2).toString().padStart(2, '0') + ':' + currentDate.getMinutes().toString().padStart(2, '0')}
+                            max={maxTime.getHours().toString().padStart(2, '0') + ':' + maxTime.getMinutes().toString().padStart(2, '0')}
+                            onChange={(e) => setEndTime(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+                    <Form.Group >
+                        <Form.Label>Timer Time</Form.Label>
+                        <Form.Control
+                          type="number"
+                          placeholder={timerDuration}
+                          min="1"
+                          max="4"
+                          value={timerDuration}
+                          required
+                        />
+                    </Form.Group>
+                    <br />
                 <Form.Group className='input-container'>
                   <Button type="button" onClick={handleCheckIfFree}> Check If Free?</Button>
                   <Button type="button" onClick={handleReset}> Reset values</Button>
@@ -166,6 +229,7 @@ const Reservation = () => {
                 </Form.Group>
               </Form>
               {unavailability && <Alert className="info" variant="danger">This chair is not available. Try another chair</Alert>}
+              {showAlert && <Alert className="info" variant="danger">Fill all the fields or check the timer interval</Alert>}
               {availability && <Alert className="info" variant="success">Selected chair is free.</Alert>}
             </Card.Body>
           </Card>
@@ -181,7 +245,7 @@ const Reservation = () => {
             </Col>
 
             <Col md={6}>
-              <Card className="login-container">
+              <Card>
                 <Card.Header>
                   <h4 style={{ textAlign: 'center', margin: '10px' }}>Table Map View</h4>
                 </Card.Header>

@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import firebase from "../firebase";
 import { useAuth } from "../context/AuthContext";
 import ConfirmLogin from "./ConfirmLogin";
+import ConfirmCardID from "./ConfirmCardID";
 import ConfirmSID from "./ConfirmSID";
 import Timer from "./Timer"
 
@@ -11,7 +12,8 @@ const StartTimer = () => {
   const [confirmReservation, setConfirmReservation] = useState(false);
   const [startTimer, setStartTimer] = useState(false);
   const [emailConfirm, setEmailConfirm] = useState(false);
-  const [nfcConfirm, setNfcConfirm] = useState(false);
+  const [studentIDConfirm, setStudentIDConfirm] = useState(false);
+  const [cardIDConfirim, setCardIDConfirm] = useState(false);
   const [reservationMethod, setReservationMethod] = useState('');
   const [timerDuration, setTimerDuration] = useState(0); // Added state to store timer duration
   const [Error, setError] = useState("error");
@@ -23,15 +25,23 @@ const StartTimer = () => {
       if (reservationMethod === 'email') {
         console.log('confirm with email');
         setEmailConfirm(true);
-        setNfcConfirm(false);
-      } else if (reservationMethod === 'nfcReader') {
-        console.log('nfcReader');
+        setStudentIDConfirm(false);
+        setCardIDConfirm(false);
+      } else if (reservationMethod === 'studentID') {
+        console.log('studentID');
         setEmailConfirm(false);
-        setNfcConfirm(true);
-      } else {
+        setStudentIDConfirm(true);
+        setCardIDConfirm(false);
+      } else if(reservationMethod === 'cardID'){
+        console.log('cardID');
+        setEmailConfirm(false);
+        setStudentIDConfirm(false);
+        setCardIDConfirm(true);
+      }else{
         console.log('method not selected');
         setEmailConfirm(false);
-        setNfcConfirm(false);
+        setStudentIDConfirm(false);
+        setCardIDConfirm(false);
       }
     } catch (error) {
       console.error('Error starting timer:', error.message);
@@ -72,7 +82,8 @@ const StartTimer = () => {
                 <Form.Control as="select" value={reservationMethod} onChange={handleReservationMethod}>
                   <option value="">Select...</option>
                   <option value="email">Email</option>
-                  <option value="nfcReader">Student ID</option>
+                  <option value="studentID">Student ID</option>
+                  <option value="cardID">Read Card</option>
                 </Form.Control>
               </Form.Group>
               <br />
@@ -83,7 +94,8 @@ const StartTimer = () => {
             <br />
           </div>
           {emailConfirm && <ConfirmLogin />}
-          {nfcConfirm && <ConfirmSID />}
+          {studentIDConfirm && <ConfirmSID />}
+          {cardIDConfirim && <ConfirmCardID />}
         </div>
       )}
       {startTimer && <Timer duration={timerDuration} onTimerEnd={handleTimerEnd} />}

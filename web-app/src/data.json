@@ -1,0 +1,736 @@
+{
+  "floors": {
+    "floor0": {
+      "tables": {
+        "table1": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table10": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table2": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table3": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table4": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table5": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table6": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table7": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table8": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table9": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        }
+      }
+    },
+    "floor1": {
+      "tables": {
+        "table1": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table10": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table2": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table3": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table4": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table5": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table6": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table7": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table8": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table9": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        }
+      }
+    },
+    "floor2": {
+      "tables": {
+        "table1": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table10": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table2": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table3": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table4": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table5": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table6": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table7": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table8": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        },
+        "table9": {
+          "chairs": {
+            "chair1": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair2": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair3": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            },
+            "chair4": {
+              "status": "available",
+              "timerDuration": 0,
+              "cardID": "0"
+            }
+          }
+        }
+      }
+    }
+  }
+}

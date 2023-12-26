@@ -68,7 +68,7 @@ const Timer = () => {
     try {
       // Update status and timerDuration in the Realtime Database
       const chairRef = firebase.database().ref(`floors/floor${floor}/tables/table${table}/chairs/chair${chair}`);
-      await chairRef.set({ status: 'available', timerDuration: 0 });
+      await chairRef.set({ cardID:'0', status: 'available', timerDuration: 0 });
 
       // Delete the reservation document from Firestore
       const reservationsRef = firebase.firestore().collection('reservations');

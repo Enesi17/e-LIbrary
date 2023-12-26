@@ -1,12 +1,13 @@
 import React from "react";
 import './index.css';
 import { AuthProvider} from "./context/AuthContext";
-import Home from './components/Home';
-import Login from './components/Login';
+import Home from "./components/Home"
+import Login from "./components/Login"
 import Register from "./components/Register";
 import Reservation from "./components/Reservation";
 import ManageReservation from "./components/ManageReservation";
 import Timer from "./components/Timer";
+import TableMapView from "./components/TableMapView";
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
     case "/timer":
       component = <Timer />
       break;
+    case "/maps":
+      component = <TableMapView />
+      break;
   }
   
   return (
@@ -43,4 +47,3 @@ function App() {
 }
 
 export default App;
-

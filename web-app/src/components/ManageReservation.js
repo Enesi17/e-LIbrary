@@ -13,9 +13,11 @@ const ManageReservation = () => {
   const [floor, setFloor] = useState(''); // Ensure floor, table, and chair are defined
   const [table, setTable] = useState('');
   const [chair, setChair] = useState('');
+  const [resDate, setResDate] = useState();
+
   const [startTimer, setStartTimer] = useState(false);
   const currentDate = new Date();
-  const timestamp = currentDate.getTime();
+  
 
   useEffect(() => {
     // Fetch reservation data when the component mounts
@@ -32,6 +34,8 @@ const ManageReservation = () => {
           setFloor(reservationDoc.floor);
           setTable(reservationDoc.table);
           setChair(reservationDoc.chair);
+          setResDate(reservationDoc.reservationDate);
+          console.log("data:",resDate);
         } else {
           setError('No reservation found.');
         }
@@ -48,7 +52,7 @@ const ManageReservation = () => {
     try {
       // Update status and timerDuration in the Realtime Database
       const chairRef = firebase.database().ref(`floors/floor${floor}/tables/table${table}/chairs/chair${chair}`);
-      await chairRef.set({ status: 'available', timerDuration: 0 });
+      await chairRef.set({ cardID: "0", status: 'available', timerDuration: 0 });
 
       // Delete the reservation document from Firestore
       const reservationsRef = firebase.firestore().collection('reservations');
@@ -69,10 +73,19 @@ const ManageReservation = () => {
   }
 
   const handleStartTimer = () => {
-    setStartTimer(true);
-    console.log("Timer started");
+     // Assuming 'reservationDate' is a string in 'YYYY-MM-DD' format
+    const currentDateString = currentDate.toISOString().split('T')[0];// Get the current date in 'YYYY-MM-DD' format
+    console.log(resDate);
+    console.log(currentDate);
+    if (resDate === currentDateString) {
+      // Start the timer
+      setStartTimer(true);
+    } else {
+      // Display a message or take appropriate action
+      setError("Cannot start the timer. Reservation date does not match today.");
+      console.log("Cannot start the timer. Reservation date does not match today.");
+    }
   };
-
   const handleBack = async (e) => {
     e.preventDefault();
 
@@ -96,7 +109,6 @@ const ManageReservation = () => {
               <p>Table: {reservationData.table}</p>
               <p>Chair: {reservationData.chair}</p>
               <p>Timer Duration: {reservationData.timerDuration} minutes</p>
-              <p>Reservation Time: {timestamp} </p>
 
 
               <Button variant="danger" onClick={handleCancelReservation}>

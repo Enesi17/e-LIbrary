@@ -63,7 +63,7 @@ const Login = () => {
                 </Form>
             </Card.Body>
             <Card.Footer>
-                <p>If there is any problems while trying to login contact <a href="">tech support</a></p>
+                <p>For tech support <a href="">contact us</a></p>
             </Card.Footer>
         </Card>}
         { loginSuccess && <Alert className="info" variant="success">Login succsessfully</Alert> }

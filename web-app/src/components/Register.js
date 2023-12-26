@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Card, Form, Button, Alert } from 'react-bootstrap';
 import { useAuth } from "../context/AuthContext";
-import "../index.css"
 import { firestore } from "../firebase";
 
 const Register = () => {
@@ -110,9 +109,7 @@ const Register = () => {
                 </Form>
             </Card.Body>
             <Card.Footer>
-                <p>
-                    For any problems while trying to register contact the tech support
-                </p>
+                    <p>For tech support <a href="">contact us</a></p>
             </Card.Footer>
         </Card>}
         {signupSuccess && setTimeout(function () {window.location.pathname = '/reservation';}, 100)}

@@ -22,7 +22,7 @@ const Reservation = () => {
   const timestamp = currentDate.getTime();
   const maxDate = new Date();
   maxDate.setDate(currentDate.getDate() + 5);
-  const maxTime = new Date(currentDate.getTime() + 5 * 60 * 60 * 1000);
+  const maxTime = new Date(currentDate.getTime() + 3 * 60 * 60 * 1000);
   const [selectedDate, setSelectedDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');

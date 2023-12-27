@@ -63,7 +63,8 @@ const Login = () => {
                 </Form>
             </Card.Body>
             <Card.Footer>
-                <p>For tech support <a href="">contact us</a></p>
+                <p>For tech support <a href="/contactUs">contact us</a></p>
+                <p>New user? <a href="/register">Register</a></p>
             </Card.Footer>
         </Card>}
         { loginSuccess && <Alert className="info" variant="success">Login succsessfully</Alert> }

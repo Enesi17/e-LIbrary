@@ -109,7 +109,8 @@ const Register = () => {
                 </Form>
             </Card.Body>
             <Card.Footer>
-                    <p>For tech support <a href="">contact us</a></p>
+                    <p>For tech support <a href="/contactUs">contact us</a></p>
+                    <p>Already have an account? <a href="/login">Login</a></p>
             </Card.Footer>
         </Card>}
         {signupSuccess && setTimeout(function () {window.location.pathname = '/options';}, 100)}

@@ -79,6 +79,12 @@ const Reservation = () => {
   };
 
   const handleReserve = async () => {
+
+    // if (!validateFormInputs()) {
+    //   setError("Please fill in all form fields.");
+    //   setShowAlert(true);
+    //   return;
+    // }
     
     try {
       const chairRef = firebase.database().ref(`floors/floor${floor}/tables/table${table}/chairs/chair${chair}`);

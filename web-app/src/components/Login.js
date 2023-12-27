@@ -67,7 +67,7 @@ const Login = () => {
             </Card.Footer>
         </Card>}
         { loginSuccess && <Alert className="info" variant="success">Login succsessfully</Alert> }
-        { loginSuccess && setTimeout(function () {window.location.pathname = '/reservation';}, 100) }
+        { loginSuccess && setTimeout(function () {window.location.pathname = '/options';}, 100) }
         { currentUser && <Button type="submit" onClick={handleLogout}>Logout</Button>}
     </div>
     );

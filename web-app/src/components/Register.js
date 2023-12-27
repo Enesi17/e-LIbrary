@@ -112,7 +112,7 @@ const Register = () => {
                     <p>For tech support <a href="">contact us</a></p>
             </Card.Footer>
         </Card>}
-        {signupSuccess && setTimeout(function () {window.location.pathname = '/reservation';}, 100)}
+        {signupSuccess && setTimeout(function () {window.location.pathname = '/options';}, 100)}
         { currentUser && <Button type="button" onClick={handleLogout}>Log out</Button>}
         </div>
     );

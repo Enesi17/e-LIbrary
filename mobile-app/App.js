@@ -1,32 +1,34 @@
-import React from 'react';
+import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './components/HomeScreen';
-import RegisterScreen from './components/RegisterScreen';
-import LoginScreen from './components/LoginScreen';
-import ReservationScreen from './components/ReservationScreen';
-import ConfirmationScreen from './components/ConfirmationScreen'
-import ConfirmLogin from './components/ConfirmLogin';
-import NFCReader from './components/NFCReader';
-import TimerScreen from './components/TImerScreen';
+import Home from "./components/Home";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Reservation from "./components/Reservation";
+import ManageReservation from "./components/ManageReservation";
+import Options from "./components/Options";
+import ConfirmCardID from "./components/ConfirmCardID";
+import ConfirmLogin from "./components/ConfirmLogin";
+import ConfirmSID from "./components/ConfirmSID";
+import Timer from "./components/Timer";
 
 const Stack = createStackNavigator();
 
-const App = () => {
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen">
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name='ReservationScreen' component={ReservationScreen} />
-        <Stack.Screen name='ConfirmationScreen' component={ConfirmationScreen} />
-        <Stack.Screen name='ConfirmLogin' component={ConfirmLogin}/>
-        <Stack.Screen name='NFCReader' component={NFCReader} />
-        <Stack.Screen name='TimerScreen' component={TimerScreen} />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Reservation" component={Reservation} />
+        <Stack.Screen name="ManageReservation" component={ManageReservation} />
+        <Stack.Screen name="Options" component={Options} />
+        <Stack.Screen name="ConfirmCardID" component={ConfirmCardID} />
+        <Stack.Screen name="ConfirmLogin" component={ConfirmLogin} />
+        <Stack.Screen name="ConfirmSID" component={ConfirmSID} />
+        <Stack.Screen name="Timer" component={Timer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
-export default App;
+}

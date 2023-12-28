@@ -1,96 +1,68 @@
-import React, { useRef, useState } from 'react';
-import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import firebaseApp from '../firebase';
+import React, { useRef, useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { useNavigation } from '@react-navigation/native';
 
-const ConfirmLogin = ({ navigation }) => {
-
+const Login = () => {
+  const auth = getAuth();
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loginFail, setLoginFail] = useState(false);
-  const [error, setError] = useState(null);
-
-    //   const { login, logout } = useAuth(); // Adjust this based on your actual AuthContext
-  const emailRef = useRef();
+  const [confirmFail, setConfirmFail] = useState(false);
+  const [email, setEmail] = useState('');
   const passwordRef = useRef();
+  const [error, setError] = useState('');
+  const navigation = useNavigation();
 
-  const handleLogin = async () => {
+  const handleSubmit = async () => {
     try {
-      const auth = getAuth(firebaseApp);
-      const email = emailRef.current.value;
-      const password = passwordRef.current.value;
-  
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log('Confirmation was done successfully');
-      navigation.navigate('TimerScreen');
+      setError('');
+      await signInWithEmailAndPassword(auth, email, passwordRef.current);
+      setLoginSuccess(true);
+      setLoginFail(false);
+      navigation.navigate('Timer');
     } catch (error) {
       setError('Login Failed');
-      console.error('Error logging in:', error.message);
+      setLoginFail(true);
+      console.log(error);
     }
   };
 
-//   const handleLogout = async () => {
-//     try {
-//       await logout();
-//     } catch (error) {
-//       console.error('Failed to logout:', error.message);
-//     }
-//   };
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Confirmation To Start Timer</Text>
-      {/* {loginFail && (
-        <Alert style={styles.alert} variant="danger">
-          Confirm failed
-        </Alert>
-      )} */}
-      <TextInput
-        style={styles.input}
-        placeholder="Enter email"
-        keyboardType="email-address"
-        ref={emailRef}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Enter password"
-        secureTextEntry
-        ref={passwordRef}
-      />
-      <Button title="Confirm" onPress={handleLogin} />
-      {/* {loginSuccess && (
-        <Alert style={styles.alert} variant="success">
-          Login successfully
-        </Alert>
-      )} */}
-      {/* {loginSuccess &&
-        setTimeout(function () {
-          window.location.pathname = '/timer'; // Adjust this based on your navigation method
-        }, 100)} */}
-      {/* currentUser && <Button type="button" onPress={handleLogout}>Logout</Button> */}
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={{ fontSize: 24, marginBottom: 20 }}>Confirmation To Start Timer</Text>
+      {loginFail && <Text style={{ color: 'red' }}>Confirm failed</Text>}
+      <View style={{ width: '80%' }}>
+        <TextInput
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20, padding: 10 }}
+          placeholder="Enter email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          keyboardType="email-address"
+        />
+        <TextInput
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20, padding: 10 }}
+          placeholder="Enter password"
+          ref={passwordRef}
+          secureTextEntry
+        />
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#007BFF',
+            padding: 10,
+            alignItems: 'center',
+            borderRadius: 5,
+          }}
+          onPress={handleSubmit}
+        >
+          <Text style={{ color: 'white' }}>Confirm</Text>
+        </TouchableOpacity>
+      </View>
+      {confirmFail && <Text style={{ color: 'red' }}>Wrong Email</Text>}
+      {loginSuccess && <Text style={{ color: 'green' }}>Login successfully</Text>}
+      {/* {currentUser && <Button type="button" onPress={handleLogout}>Logout</Button>} */}
+      <Text style={{ marginTop: 20 }}>If there is any problem while trying to login, contact tech support</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    marginVertical: 20,
-  },
-  input: {
-    width: '80%',
-    height: 40,
-    borderWidth: 1,
-    marginBottom: 20,
-    padding: 10,
-  },
-  alert: {
-    marginTop: 10,
-  },
-});
-
-export default ConfirmLogin;
+export default Login;

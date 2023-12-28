@@ -4,7 +4,8 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import firebaseApp from '../firebase';
 
-const LoginScreen = ({ navigation }) => {
+const Login = ({ navigation }) => {
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -14,7 +15,7 @@ const LoginScreen = ({ navigation }) => {
       const auth = getAuth(firebaseApp);
       await signInWithEmailAndPassword(auth, email, password);
       console.log('User logged in successfully');
-      navigation.navigate('ReservationScreen');
+      navigation.navigate('Options');
     } catch (error) {
       setError('Login Failed');
       console.error('Error logging in:', error.message);
@@ -68,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default Login;

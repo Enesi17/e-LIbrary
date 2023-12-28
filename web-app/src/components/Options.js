@@ -39,7 +39,7 @@ const Options = () => {
       <Button onClick={handleReservationClick}>Make a Reservation</Button>
       <br />
       <br />
-      <Button onClick={handleStartTimerClick}>Start Timer</Button>
+      <Button onClick={handleStartTimerClick}>I have a reservation</Button>
       <br />
       <Button onClick={handleLogoutClick}>Log out</Button>
       <br />

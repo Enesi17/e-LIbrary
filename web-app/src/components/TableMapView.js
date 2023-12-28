@@ -80,20 +80,21 @@ const TableMapView = ({ onSelectChair }) => {
   };
 
   return (
-    <div style={{alignContent:'center', alignItems:'center', textAlign:'center'}}>
-      <ButtonGroup>
-        {[0, 1, 2].map(floor => (
-          <Button
-            key={floor}
-            variant={selectedFloor === floor ? 'primary' : 'outline-primary'}
-            onClick={() => setSelectedFloor(floor)}
-          >
-            Floor {floor}
-          </Button>
-        ))}
-      </ButtonGroup>
-      {renderTableMap()}
-    </div>
+    <div>
+  <ButtonGroup>
+    {[0, 1, 2].map(floor => (
+      <Button
+        key={floor}
+        variant={selectedFloor === floor ? 'primary' : 'outline-primary'}
+        onClick={() => setSelectedFloor(floor)}
+      >
+        Floor {floor}
+      </Button>
+    ))}
+  </ButtonGroup>
+  {renderTableMap()}
+</div>
+
   );
 }
 

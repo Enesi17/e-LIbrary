@@ -8,6 +8,7 @@ import Reservation from "./components/Reservation";
 import ManageReservation from "./components/ManageReservation";
 import Timer from "./components/Timer";
 import TableMapView from "./components/TableMapView";
+import Options from "./components/Options";
 
 function App() {
 
@@ -34,6 +35,9 @@ function App() {
       break;
     case "/maps":
       component = <TableMapView />
+      break;
+    case "/options":
+      component = <Options />
       break;
   }
   

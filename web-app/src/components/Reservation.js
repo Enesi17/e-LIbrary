@@ -142,7 +142,8 @@ const Reservation = () => {
         <div>
         <h1 style={{ textAlign: 'center', margin: '20px' }}>RESERVATIONS</h1>
         <Row>
-          <Col md={6}>
+          <Col md={1}></Col>
+          <Col md={4}>
           <Card className="login-container">
             <CardHeader>
               <h4 style={{ textAlign: 'center', margin: '10px' }}>Reserve a chair for yourself</h4>
@@ -249,17 +250,19 @@ const Reservation = () => {
               </div>
         )}
             </Col>
-
-            <Col md={6}>
-              <Card>
+            <Col md={2}>
+            </Col>
+            <Col md={4}>
+              <Card className="login-container">
                 <Card.Header>
                   <h4 style={{ textAlign: 'center', margin: '10px' }}>Table Map View</h4>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '200px' }}>
                   <TableMapView onSelectChair={handleSelectChair} />
                 </Card.Body>
               </Card>
             </Col>
+            <Col md={1}></Col>
           </Row>
         </div>
       )}
